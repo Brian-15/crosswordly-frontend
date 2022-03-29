@@ -2,6 +2,6 @@
   margin: auto;
 }
 
-.Board-row {
+.Board > tbody > tr {
   height: 100px;
 }

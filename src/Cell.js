@@ -1,12 +1,16 @@
 import "./Cell.css";
 
 const Cell = ({ letter, isActive }) => {
-  const className = " Cell" + letter ?
-    (isActive ? "-active" : "-inactive")
-    : "-blank";
+  let className;
 
-  return <td className={"Cell" + className}>
-    {letter && isActive ? letter : ""}
+  if (letter) {
+    className = "Cell-" + (isActive ? "active" : "inactive");
+  } else {
+    className = "Cell-blank";
+  }
+
+  return <td className={"Cell " + className}>
+    {isActive ? letter : ""}
   </td>;
 };
 
