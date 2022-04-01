@@ -3,13 +3,7 @@ import Cell from "./Cell";
 import { v4 as uuid } from "uuid";
 import "./Board.css";
 
-const Board = ({ rows, words }) => {
-  console.log(rows, words)
-  const [activeCells, setActiveCells] = useState(
-    rows.map(row => row.map(cell => {
-      return cell ? false : null;
-    }))
-  );
+const Board = ({ rows, activeCells }) => {
   const width = `${100 * rows[0].length}px`;
 
   return <table className="Board" style={{ width }}>

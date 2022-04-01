@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 const App = () => {
   return (
     <div className="App">
-      <Game />
+      <Game word="likeable" />
     </div>
   );
 };
