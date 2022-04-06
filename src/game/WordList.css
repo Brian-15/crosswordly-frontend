@@ -1,0 +1,22 @@
+.WordList {
+  text-align: left;
+  list-style: none;
+  position: absolute;
+  margin: auto;
+  width: 12.5%;
+  display: flex;
+}
+
+.WordList-btn {
+  margin-left: 0;
+  position: absolute;
+  display: flex;
+}
+
+.show {
+  transform: translateX(0);
+}
+
+.hide {
+  transform: translateX(-100%);
+}

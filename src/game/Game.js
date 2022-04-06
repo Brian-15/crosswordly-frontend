@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Board from "./Board";
 import GuessForm from "../forms/GuessForm";
+import WordList from "./WordList";
 import { backendURL } from "../config";
 import createLetterMap from "../helpers/createLetterMap";
 
@@ -48,11 +49,11 @@ const Game = ({ word, maxWords }) => {
     }
     try {
       const { data } = await axios.get(backendURL + `/words`, { params: { term: guess } });
+      wordHistory.push(data);
+      setWordHistory(wordHistory);
       if (gameData.words[guess]) {
         const { xi, xf, yi, yf } = gameData.words[guess];
-        wordsFound[guess] = data.definitions;
         wordsFound.numCrosswordsFound++;
-        setWordsFound(wordsFound);
         setActiveCells(cells => cells.map((row, rowIdx) => {
           if (rowIdx < xi || xf < rowIdx) return row;
           return row.map((cell, colIdx) => {
@@ -60,12 +61,9 @@ const Game = ({ word, maxWords }) => {
             return true;
           });
         }));
-      } else {
-        setWordsFound(wordsFoundData => ({
-          ...wordsFoundData,
-          [guess]: data.definitions
-        }));
       }
+      wordsFound[guess] = true;
+      setWordsFound(wordsFound);
     } catch (err) {
       console.log("invalid word, try again", err)
       return;
@@ -77,6 +75,7 @@ const Game = ({ word, maxWords }) => {
   return <>
     {gameData && activeCells ? 
       <>
+        <WordList words={wordHistory} />
         <Board
           rows={gameData.crossword}
           words={gameData.words}
