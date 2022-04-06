@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Board from "./Board";
-import GuessForm from "./forms/GuessForm";
-import { backendURL } from "./config";
-import createLetterMap from "./helpers/createLetterMap";
+import GuessForm from "../forms/GuessForm";
+import { backendURL } from "../config";
+import createLetterMap from "../helpers/createLetterMap";
 
-const Game = ({ word }) => {
+const Game = ({ word, maxWords }) => {
   const [gameData, setGameData] = useState(undefined);
   const [rootWord, setRootWord] = useState(word);
   const [wordsFound, setWordsFound] = useState({ numCrosswordsFound: 0 });
   const [guess, setGuess] = useState("");
   const [letterMap, setLetterMap] = useState(undefined);
   const [activeCells, setActiveCells] = useState(undefined);
+  const [wordHistory, setWordHistory] = useState([]);
 
   useEffect(() => {
     function fetchWord() {
@@ -23,7 +24,7 @@ const Game = ({ word }) => {
     }
 
     async function fetchBoard(root) {
-      const { data } = await axios.get(backendURL + `/boards/${root}`);
+      const { data } = await axios.get(backendURL + `/boards?letters=${root}`);
       setGameData(data);
       setActiveCells(data.crossword.map(row => row.map(cell => {
         return cell ? false : null;

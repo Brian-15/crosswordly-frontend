@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Cell from "./Cell";
 import { v4 as uuid } from "uuid";
 import "./Board.css";

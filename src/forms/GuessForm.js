@@ -7,7 +7,7 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
     const lastChar = value.at(-1);
     if (value.length > guess.length) {
       // check that last letter entered is present in rootWord, and length of guess does not exceed rootWord
-      if (value.length >= letters.length ||
+      if (value.length > letters.length ||
         (value.length > 0 && letters.indexOf(lastChar) === -1))
       {
         return;
