@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Board from "./Board";
 import GuessForm from "../forms/GuessForm";
-import WordList from "./WordList";
+import WordList from "../words/WordList";
 import { backendURL } from "../config";
 import createLetterMap from "../helpers/createLetterMap";
 

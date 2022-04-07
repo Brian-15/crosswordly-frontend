@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useCollapse from "react-collapsed";
 import { v4 as uuid } from "uuid";
 import "./DefinitionList.css";
