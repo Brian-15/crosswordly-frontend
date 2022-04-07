@@ -1,3 +1,5 @@
+import "./Form.css"; 
+
 const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
   
   const handleChange = evt => {
@@ -11,32 +13,35 @@ const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
     setGameStart(true);
   };
 
-  return <form
+  return (
+    <form
+      className="Form"
       onSubmit={handleSubmit}
-      autoComplete="off"
-    >
-    <label htmlFor="letters">
-      Letters to seed the puzzle:
-      <input
-        type="text"
-        name="letters"
-        value={formData.letters}
-        onChange={handleChange}
-      />
-    </label>
-    <label htmlFor="maxWords">
-      Maximum Number of Words:
-      <input
-        type="number"
-        name="maxWords"
-        min="1"
-        max="20"
-        value={formData.maxWords}
-        onChange={handleChange}
-      />
-    </label>
-    <button type="submit">Start</button>
-  </form>
+      autoComplete="off">
+      <div className="Form-field">
+        <label className="Form-label" htmlFor="letters">
+          Seed:
+        </label>
+        <input className="Form-input"
+          type="text"
+          name="letters"
+          value={formData.letters}
+          onChange={handleChange}/>
+      </div>
+      <div className="Form-field">
+        <label className="Form-label" htmlFor="maxWords">
+          Number of Words:
+        </label>
+        <input className="Form-input"
+          type="number"
+          name="maxWords"
+          min="1"
+          max="20"
+          value={formData.maxWords}
+          onChange={handleChange}/>
+      </div>
+      <button className="Form-btn" type="submit">Start</button>
+    </form>);
 };
 
 export default GameSetupForm;

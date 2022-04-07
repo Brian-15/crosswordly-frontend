@@ -1,3 +1,5 @@
+import "./Form.css"; 
+
 const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGuess }) => {
 
   const handleChange = evt => {
@@ -24,20 +26,17 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
     setGuess(value);
   };
 
-  return <form
-    className="GuessForm"
-    onSubmit={handleGuess}
-    autoComplete="off"
-  >
-    <label>
-      <input
+  return (
+    <form
+      className="Form"
+      onSubmit={handleGuess}
+      autoComplete="off">
+      <input className="Form-field"
         name="guess"
         value={guess}
-        onChange={handleChange}
-      />
-    </label>
-    <button type="submit">Guess</button>
-  </form>;
+        onChange={handleChange}/>
+      <button className="Form-btn" style={{ margin: "auto" }} type="submit">Guess</button>
+    </form>);
 };
 
 export default GuessForm;

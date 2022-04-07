@@ -1,0 +1,24 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 15vw;
+  text-align: left;
+}
+
+.Form-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form-input {
+  width: 50px;
+}
+
+.Form-label {
+}
+
+.Form-btn {
+  width: 50px;
+  margin-left: auto;
+}

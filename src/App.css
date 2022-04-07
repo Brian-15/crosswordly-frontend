@@ -1,9 +1,10 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
-  margin: auto;
 }
 
 .App-title {
-  display: inline-block;
 }
