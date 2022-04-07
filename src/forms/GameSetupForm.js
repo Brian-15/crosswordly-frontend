@@ -1,5 +1,3 @@
-
-
 const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
   
   const handleChange = evt => {
@@ -13,7 +11,10 @@ const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
     setGameStart(true);
   };
 
-  return <form onSubmit={handleSubmit}>
+  return <form
+      onSubmit={handleSubmit}
+      autoComplete="off"
+    >
     <label htmlFor="letters">
       Letters to seed the puzzle:
       <input

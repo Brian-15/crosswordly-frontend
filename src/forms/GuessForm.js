@@ -24,7 +24,11 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
     setGuess(value);
   };
 
-  return <form className="GuessForm" onSubmit={handleGuess}>
+  return <form
+    className="GuessForm"
+    onSubmit={handleGuess}
+    autoComplete="off"
+  >
     <label>
       <input
         name="guess"
