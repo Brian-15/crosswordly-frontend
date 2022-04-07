@@ -26,8 +26,8 @@ const DefinitionList = ({ isExpanded, updateHook, word, definitions }) => {
           </li>
         )}
     </ol>
-    : <p {...getCollapseProps()}>
-      Crosswordly did not find definitions for {word}.<br/>
+    : <p className="DefinitionList-empty" {...getCollapseProps()}>
+      Could not find definitions for {word}.<br/>
       Find the definitions&nbsp;
       <a target="_blank" rel="noreferrer" href={`https://www.google.com/search?q=define+${word}`}>
         here

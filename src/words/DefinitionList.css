@@ -2,3 +2,7 @@
   cursor: pointer;
   margin-left: 2em;
 }
+
+.DefinitionList-empty {
+  margin-left: 2em;
+}

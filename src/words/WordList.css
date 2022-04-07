@@ -9,7 +9,7 @@
   margin-left: 0;
   top: 0;
   position: sticky;
-  background-color: bisque;
+  background-color: peachpuff;
   cursor: pointer;
   user-select: none;
   -ms-user-select: none;
@@ -30,4 +30,8 @@
 
 .WordList-empty {
   text-align: center;
+}
+
+.WordList-collapsible .react-scrollable-list {
+  background-color: peachpuff;
 }
