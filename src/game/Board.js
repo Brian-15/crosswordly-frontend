@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import "./Board.css";
 
 const Board = ({ rows, activeCells }) => {
-  const width = `${100 * rows[0].length}px`;
+  const width = `${50 * rows[0].length}px`;
 
   return <table className="Board" style={{ width }}>
     <tbody>
