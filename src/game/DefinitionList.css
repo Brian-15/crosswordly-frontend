@@ -1,3 +1,8 @@
 .DefinitionList {
-  
+  /* overflow: auto; */
+}
+
+.DefinitionList-word {
+  cursor: pointer;
+  margin-left: auto;
 }

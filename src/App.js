@@ -13,7 +13,7 @@ const App = () => {
   const [gameStart, setGameStart] = useState(false);
 
   return <div className="App">
-    <h1>CROSSWORDLY</h1>
+    <h1 className="App-title">CROSSWORDLY</h1>
     {gameStart
       ? <Game word={formData.letters} maxWords={formData.maxWords} />
       : <>

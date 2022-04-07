@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGuess }) => {
 
   const handleChange = evt => {
@@ -23,7 +21,6 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
       letterMap[guess.at(-1)].count--;
     }
     setLetterMap(letterMap);
-    console.log(letterMap);
     setGuess(value);
   };
 

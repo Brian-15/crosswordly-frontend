@@ -1,32 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DefinitionList from "./DefinitionList";
 import { v4 as uuid } from "uuid";
+import useCollapse from "react-collapsed";
+import ScrollableList from "react-scrollable-list";
 import "./WordList.css";
 
 const WordList = ({ words }) => {
-  const [isShowing, setIsShowing] = useState(false);
-  const handleClick = () => isShowing ? setIsShowing(false) : setIsShowing(true);
-  return <>
-    <button className="WordList-btn" onClick={handleClick}>{ isShowing ? "<" : ">" }</button>
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const [expandedDefs, setExpandedDefs] = useState(words.map(() => false));
+  useEffect(() => {
+    expandedDefs.push(false);
+    setExpandedDefs(expandedDefs)
+  }, [words, expandedDefs])
+  const handleExpansion = idx => {
+    return () => {
+      expandedDefs[idx] = expandedDefs[idx] ? false : true;
+      setExpandedDefs(expandedDefs);
+    }
+  };
+  return <div className="WordList-collapsible">
+    <div
+      className="WordList-btn"
+      {...getToggleProps()}
+    >
+      { "Definitions " + (isExpanded ? "<" : ">") }
+    </div>
     {words.length
-    ? <ul className={`WordList ${isShowing ? "show" : "hide"}`}>
-        {words.map(({ word, definitions }) => {
-          return definitions
-            ? <li key={uuid()}>
-                <h3>{word}</h3>
-                <DefinitionList definitions={definitions} />
-              </li>
-            : <p>
-                Crosswordly did not find definitions for {word}.<br/>
-                Find the definition
-                <a href={`https://www.google.com/search?q=define+${word}`}>
-                  here
-                </a>
-                on Google.
-              </p>;
-        })}</ul>
-      : <p>No words in word history</p>}
-  </>;
+    ? <ScrollableList
+        className="WordList"
+        {...getCollapseProps()}
+        listItems={words.map(({ word, definitions }, idx) => ({
+          id: uuid(),
+          content: <DefinitionList
+            word={word}
+            definitions={definitions}
+            isExpanded={expandedDefs[idx]}
+            updateHook={handleExpansion(idx)}
+          />
+        }))}
+        maxItemsToRender={5}
+      />
+      : <p {...getCollapseProps()}>No words in word history</p>
+    }
+  </div>;
 };
 
 export default WordList;

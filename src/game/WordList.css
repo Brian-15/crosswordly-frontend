@@ -1,22 +1,28 @@
 .WordList {
   text-align: left;
   list-style: none;
-  position: absolute;
   margin: auto;
-  width: 12.5%;
   display: flex;
 }
 
 .WordList-btn {
   margin-left: 0;
-  position: absolute;
-  display: flex;
+  top: 0;
+  position: sticky;
+  background-color: bisque;
+  cursor: pointer;
+  user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
-.show {
-  transform: translateX(0);
-}
-
-.hide {
-  transform: translateX(-100%);
+.WordList-collapsible {
+  position: fixed;
+  margin: auto;
+  width: 25%;
+  height: 100%;
+  overflow: auto;
+  top: 0;
+  text-align: left;
 }

@@ -3,3 +3,7 @@
   width: 100%;
   margin: auto;
 }
+
+.App-title {
+  display: inline-block;
+}
