@@ -1,8 +1,4 @@
-.DefinitionList {
-  /* overflow: auto; */
-}
-
 .DefinitionList-word {
   cursor: pointer;
-  margin-left: auto;
+  margin-left: 2em;
 }

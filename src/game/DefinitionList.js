@@ -15,7 +15,7 @@ const DefinitionList = ({ isExpanded, updateHook, word, definitions }) => {
       { `${word} ${hasExpanded ? "<" : ">"}` }
     </h3>
     {definitions
-      ? <ol className="DefinitionList" {...getCollapseProps()}>
+      ? <ol {...getCollapseProps()}>
         {definitions.map(({ definition, category, example }) => 
           <li key={uuid()}>
             <i>{ category.name }</i><br/>

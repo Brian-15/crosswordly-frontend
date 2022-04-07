@@ -40,7 +40,7 @@ const WordList = ({ words }) => {
         }))}
         maxItemsToRender={5}
       />
-      : <p {...getCollapseProps()}>No words in word history</p>
+      : <p className="WordList-empty" {...getCollapseProps()}>No words in word history</p>
     }
   </div>;
 };
