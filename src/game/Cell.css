@@ -1,11 +1,13 @@
 .Cell {
   height: 100%;
   width: 100px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .Cell-active {
   background-color: bisque;
-  border-width: 1mm;
+  border-width: 2px;
   border-color: black;
 }
 
