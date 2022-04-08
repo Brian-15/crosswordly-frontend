@@ -10,7 +10,7 @@ const Cell = ({ letter, isActive }) => {
   }
 
   return <td className={"Cell " + className}>
-    {isActive ? letter : ""}
+    <b>{isActive ? letter.toUpperCase() : ""}</b>
   </td>;
 };
 

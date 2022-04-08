@@ -1,15 +1,13 @@
 .WordList {
   text-align: left;
   list-style: none;
-  margin: auto;
-  display: flex;
 }
 
 .WordList-btn {
   margin-left: 0;
   top: 0;
   position: sticky;
-  background-color: peachpuff;
+  background-color: rgb(169, 215, 255);
   cursor: pointer;
   user-select: none;
   -ms-user-select: none;
@@ -19,8 +17,9 @@
 }
 
 .WordList-collapsible {
-  position: fixed;
-  margin: auto;
+  position: absolute;
+  left: 0;
+  margin-left: 0;
   width: 25%;
   height: 100%;
   overflow: auto;
@@ -33,5 +32,5 @@
 }
 
 .WordList-collapsible .react-scrollable-list {
-  background-color: peachpuff;
+  background-color: rgb(169, 215, 255);
 }

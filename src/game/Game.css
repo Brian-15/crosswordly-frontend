@@ -1,0 +1,6 @@
+.Game-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 50%;
+}

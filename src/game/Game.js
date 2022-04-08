@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Board from "./Board";
+import ScoreBoard from "./ScoreBoard";
 import GuessForm from "../forms/GuessForm";
 import WordList from "../words/WordList";
 import { backendURL } from "../config";
 import createLetterMap from "../helpers/createLetterMap";
+import "./Game.css";
 
 const Game = ({ word, maxWords }) => {
   const [gameData, setGameData] = useState(undefined);
@@ -30,6 +32,7 @@ const Game = ({ word, maxWords }) => {
       setActiveCells(data.crossword.map(row => row.map(cell => {
         return cell ? false : null;
       })));
+      console.log(data.words);
       setLetterMap(createLetterMap(root));
     }
 
@@ -42,7 +45,6 @@ const Game = ({ word, maxWords }) => {
   const handleGuess = async evt => {
     evt.preventDefault();
     setLetterMap(createLetterMap(rootWord));
-    console.log(gameData.words);
     if (!guess.length || guess.length < 3 || wordsFound[guess]) {
       setGuess("");
       return;
@@ -51,6 +53,7 @@ const Game = ({ word, maxWords }) => {
       const { data } = await axios.get(backendURL + `/words`, { params: { term: guess } });
       wordHistory.push(data);
       setWordHistory(wordHistory);
+      // TODO: populate definitions for guessed words
       if (gameData.words[guess]) {
         const { xi, xf, yi, yf } = gameData.words[guess];
         wordsFound.numCrosswordsFound++;
@@ -81,7 +84,8 @@ const Game = ({ word, maxWords }) => {
           words={gameData.words}
           activeCells={activeCells}
         />
-        <h2>{rootWord.split("").sort().map(letter => letter + " ")}</h2>
+        <ScoreBoard />
+        <h2>{rootWord.split("").sort().map(letter => letter.toUpperCase() + " ")}</h2>
         <GuessForm
           letters={rootWord}
           handleGuess={handleGuess}

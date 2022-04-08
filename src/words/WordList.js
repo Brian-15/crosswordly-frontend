@@ -18,7 +18,7 @@ const WordList = ({ words }) => {
       setExpandedDefs(expandedDefs);
     }
   };
-  return <div className="WordList-collapsible">
+  return <div className="WordList WordList-collapsible">
     <div
       className="WordList-btn"
       {...getToggleProps()}
@@ -38,7 +38,6 @@ const WordList = ({ words }) => {
             updateHook={handleExpansion(idx)}
           />
         }))}
-        maxItemsToRender={5}
       />
       : <p className="WordList-empty" {...getCollapseProps()}>No words in word history</p>
     }

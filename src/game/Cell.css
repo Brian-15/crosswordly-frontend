@@ -1,16 +1,16 @@
 .Cell {
   height: 100%;
   width: 100px;
+}
+
+.Cell-active {
+  background-color: bisque;
   border-width: 1mm;
   border-color: black;
 }
 
-.Cell-active {
-  background-color: orange;
-}
-
 .Cell-inactive {
-  background-color: lightcoral;
+  background-color: black;
 }
 
 .Cell-blank {
