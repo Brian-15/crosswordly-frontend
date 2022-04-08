@@ -16,6 +16,7 @@ const Game = ({ word, maxWords }) => {
   const [letterMap, setLetterMap] = useState(undefined);
   const [activeCells, setActiveCells] = useState(undefined);
   const [wordHistory, setWordHistory] = useState([]);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     function fetchWord() {
@@ -55,6 +56,7 @@ const Game = ({ word, maxWords }) => {
       setWordHistory(wordHistory);
       // TODO: populate definitions for guessed words
       if (gameData.words[guess]) {
+        setScore(score => score + 5);
         const { xi, xf, yi, yf } = gameData.words[guess];
         wordsFound.numCrosswordsFound++;
         setActiveCells(cells => cells.map((row, rowIdx) => {
@@ -64,7 +66,7 @@ const Game = ({ word, maxWords }) => {
             return true;
           });
         }));
-      }
+      } else setScore(score => score + 1);
       wordsFound[guess] = true;
       setWordsFound(wordsFound);
     } catch (err) {
@@ -84,7 +86,7 @@ const Game = ({ word, maxWords }) => {
           words={gameData.words}
           activeCells={activeCells}
         />
-        <ScoreBoard />
+        <ScoreBoard score={score} />
         <h2>{rootWord.split("").sort().map(letter => letter.toUpperCase() + " ")}</h2>
         <GuessForm
           letters={rootWord}
