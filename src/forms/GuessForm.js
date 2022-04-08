@@ -1,3 +1,4 @@
+import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
 import "./Form.css"; 
 
 const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGuess }) => {
@@ -27,16 +28,25 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
   };
 
   return (
-    <form
+    <Form
       className="Form"
       onSubmit={handleGuess}
-      autoComplete="off">
-      <input className="Form-field"
-        name="guess"
-        value={guess}
-        onChange={handleChange}/>
-      <button className="Form-btn" style={{ margin: "auto" }} type="submit">Guess</button>
-    </form>);
+      autoComplete="off"
+    >
+      <FloatingLabel
+        label="Guess"
+        className="mb-3"
+      >
+        <Form.Control
+          type="text"
+          name="guess"
+          value={guess}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+      
+      <Button className="Form-btn" type="submit">Guess</Button>
+    </Form>);
 };
 
 export default GuessForm;

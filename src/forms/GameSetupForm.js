@@ -60,36 +60,6 @@ const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
         </Col>
       </Form.Group>
     </Form>);
-
-  // return (
-  //   <form
-  //     className="Form"
-  //     onSubmit={handleSubmit}
-  //     autoComplete="off">
-  //     <div className="Form-field">
-  //       <label className="Form-label" htmlFor="letters">
-  //         Seed:
-  //       </label>
-  //       <input className="Form-input"
-  //         type="text"
-  //         name="letters"
-  //         value={formData.letters}
-  //         onChange={handleChange}/>
-  //     </div>
-  //     <div className="Form-field">
-  //       <label className="Form-label" htmlFor="maxWords">
-  //         Number of Words:
-  //       </label>
-  //       <input className="Form-input"
-  //         type="number"
-  //         name="maxWords"
-  //         min="1"
-  //         max="20"
-  //         value={formData.maxWords}
-  //         onChange={handleChange}/>
-  //     </div>
-  //     <Button className="Form-btn" type="submit">Start</Button>
-  //   </form>);
 };
 
 export default GameSetupForm;
