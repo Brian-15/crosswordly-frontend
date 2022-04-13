@@ -1,4 +1,4 @@
-import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
+import { Form, Button, FloatingLabel } from "react-bootstrap";
 import "./Form.css"; 
 
 const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGuess }) => {
@@ -44,7 +44,6 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
           onChange={handleChange}
         />
       </FloatingLabel>
-      
       <Button className="Form-btn" type="submit">Guess</Button>
     </Form>);
 };
