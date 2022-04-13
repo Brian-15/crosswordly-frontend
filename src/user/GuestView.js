@@ -5,10 +5,12 @@ import RegisterForm from "../forms/RegisterForm";
 
 const GuestView = () => (
   <>
-    <p>Play as:</p>
     <Tab.Container defaultActiveKey="guest">
       <Row>
         <Nav variant="pills" className="flex-row justify-content-center">
+          <Nav.Item>
+            <Nav.Link className="user-select-none" disabled>Play as:</Nav.Link>
+          </Nav.Item>
           <Nav.Item>
             <Nav.Link role="button" className="user-select-none" eventKey="guest">Guest</Nav.Link>
           </Nav.Item>
