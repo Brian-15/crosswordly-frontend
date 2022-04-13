@@ -27,7 +27,7 @@ const GameSetupForm = () => {
       onSubmit={handleSubmit}
       autoComplete="off">
       <Form.Group as={Row}>
-        <Form.Label size="lg" column sm={2} htmlFor="letters">
+        <Form.Label size="lg" column="true" sm={2} htmlFor="letters">
           Seed
         </Form.Label>
         <Col sm={10}>
@@ -44,7 +44,7 @@ const GameSetupForm = () => {
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
-        <Form.Label column sm={2} htmlFor="maxWords">
+        <Form.Label column="true" sm={2} htmlFor="maxWords">
           Word Limit
         </Form.Label>
         <Col sm={10}>

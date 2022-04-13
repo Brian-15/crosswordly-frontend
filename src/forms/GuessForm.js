@@ -42,7 +42,7 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
           name="guess"
           value={guess}
           onChange={handleChange}
-          placeHolder="Guess"
+          placeholder="Guess"
         />
       </FloatingLabel>
       <Button className="Form-btn" type="submit">Enter</Button>

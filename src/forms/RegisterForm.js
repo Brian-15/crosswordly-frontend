@@ -41,7 +41,7 @@ const RegisterForm = () => {
           name="username"
           value={formData.username}
           onChange={handleChange}
-          placeHolder="Username"
+          placeholder="Username"
         />
       </FloatingLabel>
       <p className="text-muted">
@@ -54,7 +54,7 @@ const RegisterForm = () => {
           name="displayName"
           value={formData.displayName}
           onChange={handleChange}
-          placeHolder="Display Name"
+          placeholder="Display Name"
         />
       </FloatingLabel>
       <p className="text-muted">
@@ -69,19 +69,19 @@ const RegisterForm = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeHolder="Password"
+              placeholder="Password"
             />
           </FloatingLabel>
         </Col>
         <Col>
-          <FloatingLabel column label="Confirm Password">
+          <FloatingLabel column="true" label="Confirm Password">
             <Form.Control
               size="md"
               type="password"
               name="confirmPwd"
               value={formData.confirmPwd}
               onChange={handleChange}
-              placeHolder="Confirm Password"
+              placeholder="Confirm Password"
             />
           </FloatingLabel>
         </Col>

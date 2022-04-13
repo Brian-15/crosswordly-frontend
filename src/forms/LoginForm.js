@@ -35,7 +35,7 @@ const LoginForm = () => {
       >
         <Form.Control
           type="text"
-          placeHolder="Username"
+          placeholder="Username"
           value={formData.username}
           onChange={handleChange}
         />
@@ -47,7 +47,8 @@ const LoginForm = () => {
         <Form.Control
           type="password"
           value={formData.password}
-          placeHolder="Password"
+          placeholder="Password"
+          onChange={handleChange}
         />
       </FloatingLabel>
     </Form>
