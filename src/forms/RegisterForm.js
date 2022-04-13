@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { backendURL } from "../config";
-import { Form, FloatingLabel, Button } from "react-bootstrap";
+import { Form, FloatingLabel, Button, Row, Col } from "react-bootstrap";
 import "./Form.css";
 
 const RegisterForm = () => {
@@ -10,7 +10,7 @@ const RegisterForm = () => {
     displayName: "",
     password: "",
     confirmPwd: "",
-  }
+  };
   const keys = Object.keys(initialData);
   const [formData, setFormData] = useState(initialData);
 
@@ -32,12 +32,8 @@ const RegisterForm = () => {
   }
 
   return (
-    <Form
-      className="Form"
-      onSubmit={handleSubmit}
-      style={{ width: "30%" }}
-    >
-      <h2 className="text-center">Register</h2>
+    <Form className="Form" onSubmit={handleSubmit}>
+      <h2 className="text-center mb-3">Register</h2>
       <FloatingLabel label="Username">
         <Form.Control
           size="md"
@@ -64,27 +60,33 @@ const RegisterForm = () => {
       <p className="text-muted">
         Will be displayed on the high score table.
       </p>
-      <FloatingLabel label="Password">
-        <Form.Control
-          size="md"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeHolder="Password"
-        />
-      </FloatingLabel>
-      <FloatingLabel label="Confirm Password">
-        <Form.Control
-          size="md"
-          type="password"
-          name="confirmPwd"
-          value={formData.confirmPwd}
-          onChange={handleChange}
-          placeHolder="Confirm Password"
-        />
-      </FloatingLabel>
-      <Button type="submit">Register</Button>
+      <Form.Group as={Row}>
+        <Col>
+          <FloatingLabel label="Password">
+            <Form.Control
+              size="md"
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeHolder="Password"
+            />
+          </FloatingLabel>
+        </Col>
+        <Col>
+          <FloatingLabel column label="Confirm Password">
+            <Form.Control
+              size="md"
+              type="password"
+              name="confirmPwd"
+              value={formData.confirmPwd}
+              onChange={handleChange}
+              placeHolder="Confirm Password"
+            />
+          </FloatingLabel>
+        </Col>
+      </Form.Group>
+      <Button className="mt-3" type="submit">Register</Button>
     </Form>
   );
 };

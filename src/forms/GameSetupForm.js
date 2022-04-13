@@ -1,16 +1,23 @@
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { useContext } from "react";
+import GameContext from "../game/GameContext";
 import "./Form.css";
 
-const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
+const GameSetupForm = () => {
+  const {
+    setGameStart,
+    setupFormData,
+    setSetupFormData
+  } = useContext(GameContext);
   
   const handleChange = evt => {
     const { name, value } = evt.target;
-    setFormData(data => ({ ...data, [name]: value.toLowerCase() }));
+    setSetupFormData(data => ({ ...data, [name]: value.toLowerCase() }));
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    if (!formData.letters || formData.maxWords <= 0) return;
+    if (!setupFormData.letters || setupFormData.maxWords <= 0) return;
     setGameStart(true);
   };
 
@@ -28,7 +35,7 @@ const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
             size="lg"
             type="text"
             name="letters"
-            value={formData.letters}
+            value={setupFormData.letters}
             onChange={handleChange}
             placeholder="Example: hello" />
           <Form.Text className="text-muted">
@@ -47,7 +54,7 @@ const GameSetupForm = ({ setGameStart, formData, setFormData }) => {
             name="maxWords"
             min="1"
             max="20"
-            value={formData.maxWords}
+            value={setupFormData.maxWords}
             onChange={handleChange}/>
           <Form.Text className="text-muted">
             Maximum number of words allowed for crossword.

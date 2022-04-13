@@ -1,14 +1,15 @@
-import RegisterForm from "../forms/RegisterForm";
-import LoginForm from "../forms/LoginForm";
+import Button from "react-bootstrap/Button";
 import UserTable from "./UserTable";
+import GameSetupForm from "../forms/GameSetupForm";
 
 const UserView = ({ user }) => {
-  return user 
-    ? <UserTable highScore={ user.highScore } />
-    : <div className="d-flex flex-row">
-        <RegisterForm />
-        <LoginForm />
-      </div>;
+  const handleClick = () => {
+    // TODO: log user out here
+  };
+  return (<>
+    <UserTable highScore={ user.highScore } />
+    <Button onClick={handleClick} variant="alert">Log Out</Button>
+  </>);
 };
 
 export default UserView;
