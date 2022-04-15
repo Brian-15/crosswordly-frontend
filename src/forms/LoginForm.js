@@ -1,8 +1,9 @@
 import axios from "axios";
 import UserContext from "../user/UserContext";
 import { useState, useContext } from "react";
-import { Form, FloatingLabel } from "react-bootstrap";
-import { backendURL } from "../config";
+import { Form, FloatingLabel, Button } from "react-bootstrap";
+import { backendURL, SECRET_KEY } from "../config";
+import { jwtVerify } from "jose";
 
 const LoginForm = () => {
   const initialData = {
@@ -17,15 +18,19 @@ const LoginForm = () => {
     setFormData(data => ({ ...data, [name]: value }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async evt => {
+    evt.preventDefault();
     const { data } = await axios.post(process.env.NODE_ENV === "production"
       ? `${backendURL}/auth/token`
-      : "http://localhost:3001/auth/token");
+      : "http://localhost:3001/auth/token",
+      { username: formData.username, password: formData.password });
     console.log(data);
-    // TODO: add jwt validation here
-    setUser(data);
+    const { payload, protectedHeader } = await jwtVerify(data.token, SECRET_KEY);
+    console.log({ payload, protectedHeader })
+    setUser(payload.dataValues);
   };
 
+  
   return (
     <Form className="Form" onSubmit={handleSubmit}>
       <h2>Log In</h2>
@@ -35,8 +40,9 @@ const LoginForm = () => {
       >
         <Form.Control
           type="text"
-          placeholder="Username"
+          name="username"
           value={formData.username}
+          placeholder="Username"
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -46,11 +52,13 @@ const LoginForm = () => {
       >
         <Form.Control
           type="password"
+          name="password"
           value={formData.password}
           placeholder="Password"
           onChange={handleChange}
         />
       </FloatingLabel>
+      <Button className="mt-3" type="submit">Log In</Button>
     </Form>
   );
 };

@@ -45,7 +45,9 @@ const GuessForm = ({ letterMap, setLetterMap, letters, guess, setGuess, handleGu
           placeholder="Guess"
         />
       </FloatingLabel>
-      <Button className="Form-btn" type="submit">Enter</Button>
+      <div className="d-flex justify-content-center">
+        <Button className="w-100" type="submit">Enter</Button>
+      </div>
     </Form>);
 };
 

@@ -1,14 +1,18 @@
+import { useContext } from "react";
+import UserContext from "./UserContext";
 import Button from "react-bootstrap/Button";
 import UserTable from "./UserTable";
 import GameSetupForm from "../forms/GameSetupForm";
 
-const UserView = ({ user }) => {
+const UserView = () => {
+  const { user, setUser } = useContext(UserContext);
   const handleClick = () => {
-    // TODO: log user out here
+    setUser(null);
   };
   return (<>
+    <GameSetupForm />
     <UserTable highScore={ user.highScore } />
-    <Button onClick={handleClick} variant="alert">Log Out</Button>
+    <Button className="mt-3" style={{ margin: "auto" }} onClick={handleClick} variant="danger">Log Out</Button>
   </>);
 };
 

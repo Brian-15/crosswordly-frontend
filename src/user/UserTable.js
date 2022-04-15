@@ -2,10 +2,10 @@ import Table from "react-bootstrap/Table";
 
 const UserTable = ({ highScore }) => {
   return (
-    <Table>
+    <Table bordered hover style={{ width: "15%", margin: "auto" }}>
       <thead>
         <tr>
-          <td>High Score</td>
+          <td>Your High Score</td>
         </tr>
       </thead>
       <tbody>

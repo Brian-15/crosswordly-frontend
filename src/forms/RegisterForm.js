@@ -23,7 +23,6 @@ const RegisterForm = () => {
     const { data } = await axios.post(process.env.NODE_ENV === "production"
       ? `${backendURL}/users`
       : "http://localhost:3001/users", formData);
-    console.log(data);
   };
 
   const handleChange = evt => {

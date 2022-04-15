@@ -62,7 +62,7 @@ const GameSetupForm = () => {
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3">
-        <Col sm={{ span: 10, offset: 2 }}>
+        <Col className="mt-3 d-flex justify-content-center">
           <Button variant="primary" type="submit">Start</Button>
         </Col>
       </Form.Group>
