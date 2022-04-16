@@ -23,6 +23,7 @@ const RegisterForm = () => {
     const { data } = await axios.post(process.env.NODE_ENV === "production"
       ? `${backendURL}/users`
       : "http://localhost:3001/users", formData);
+    console.log(data.msg);
   };
 
   const handleChange = evt => {
@@ -41,6 +42,7 @@ const RegisterForm = () => {
           value={formData.username}
           onChange={handleChange}
           placeholder="Username"
+          autoComplete="on"
         />
       </FloatingLabel>
       <p className="text-muted">
@@ -69,6 +71,7 @@ const RegisterForm = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
+              autoComplete="on"
             />
           </FloatingLabel>
         </Col>
@@ -81,6 +84,7 @@ const RegisterForm = () => {
               value={formData.confirmPwd}
               onChange={handleChange}
               placeholder="Confirm Password"
+              autoComplete="on"
             />
           </FloatingLabel>
         </Col>

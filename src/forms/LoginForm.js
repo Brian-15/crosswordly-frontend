@@ -24,9 +24,7 @@ const LoginForm = () => {
       ? `${backendURL}/auth/token`
       : "http://localhost:3001/auth/token",
       { username: formData.username, password: formData.password });
-    console.log(data);
     const { payload, protectedHeader } = await jwtVerify(data.token, SECRET_KEY);
-    console.log({ payload, protectedHeader })
     setUser(payload.dataValues);
   };
 
@@ -44,6 +42,7 @@ const LoginForm = () => {
           value={formData.username}
           placeholder="Username"
           onChange={handleChange}
+          autoComplete="on"
         />
       </FloatingLabel>
       <FloatingLabel
@@ -56,6 +55,7 @@ const LoginForm = () => {
           value={formData.password}
           placeholder="Password"
           onChange={handleChange}
+          autoComplete="on"
         />
       </FloatingLabel>
       <Button className="mt-3" type="submit">Log In</Button>
