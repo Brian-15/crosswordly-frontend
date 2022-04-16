@@ -1,5 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import UserContext from "../user/UserContext";
+import GameContext from "./GameContext";
+import VictoryView from "./VictoryView";
 import Board from "./Board";
 import ScoreBoard from "./ScoreBoard";
 import GuessForm from "../forms/GuessForm";
@@ -24,16 +27,18 @@ const Game = ({ word, maxWords }) => {
         .then(async result => {
           setRootWord(result.data);
           await fetchBoard(result.data);
-        });
+        }
+      );
     }
 
     async function fetchBoard(root) {
-      const { data } = await axios.get(backendURL + `/boards?letters=${root}`);
+      const { data } = await axios.get(process.env.NODE_ENV === "production"
+        ? backendURL + `/boards?letters=${root}`
+        : `http://localhost:3001/boards?letters=${root}`);
       setGameData(data);
       setActiveCells(data.crossword.map(row => row.map(cell => {
         return cell ? false : null;
       })));
-      console.log(data.words);
       setLetterMap(createLetterMap(root));
     }
 
@@ -54,7 +59,7 @@ const Game = ({ word, maxWords }) => {
       const { data } = await axios.get(backendURL + `/words`, { params: { term: guess } });
       wordHistory.push(data);
       setWordHistory(wordHistory);
-      // TODO: populate definitions for guessed words
+      // populate definitions for guessed words
       if (gameData.words[guess]) {
         setScore(score => score + 5);
         const { xi, xf, yi, yf } = gameData.words[guess];
@@ -71,12 +76,10 @@ const Game = ({ word, maxWords }) => {
       setWordsFound(wordsFound);
     } catch (err) {
       console.log("invalid word, try again", err)
-      return;
     } finally {
       setGuess("");
     }
   };
-  // if (gameData) console.log(gameData.crossword);
   return <>
     {gameData && activeCells ? 
       <>
@@ -86,16 +89,22 @@ const Game = ({ word, maxWords }) => {
           words={gameData.words}
           activeCells={activeCells}
         />
-        <ScoreBoard score={score} />
-        <h2>{rootWord.split("").sort().map(letter => letter.toUpperCase() + " ")}</h2>
-        <GuessForm
-          letters={rootWord}
-          handleGuess={handleGuess}
-          guess={guess}
-          setGuess={setGuess}
-          letterMap={letterMap}
-          setLetterMap={setLetterMap}
-        />
+        {wordsFound.numCrosswordsFound < gameData.numWords
+          ? <>
+              <ScoreBoard score={score} />
+              <h2>{rootWord.split("").sort().map(letter => letter.toUpperCase() + " ")}</h2>
+              <GuessForm
+                letters={rootWord}
+                handleGuess={handleGuess}
+                guess={guess}
+                setGuess={setGuess}
+                letterMap={letterMap}
+                setLetterMap={setLetterMap}
+              />
+            </>
+          : <VictoryView score={score} />
+        }
+        
       </>
       :
       <h1>Loading...</h1>
