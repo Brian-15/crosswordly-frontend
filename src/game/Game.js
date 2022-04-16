@@ -7,7 +7,7 @@ import VictoryView from "./VictoryView";
 import Board from "./Board";
 import ScoreBoard from "./ScoreBoard";
 import GuessForm from "../forms/GuessForm";
-import WordList from "../words/WordList";
+import WordHistory from "../words/WordHistory";
 import { backendURL } from "../config";
 import createLetterMap from "../helpers/createLetterMap";
 import "./Game.css";
@@ -85,7 +85,7 @@ const Game = ({ word, maxWords }) => {
     {gameData && activeCells ? 
       <Row>
         <Col>
-          <WordList words={wordHistory} />
+          <WordHistory words={wordHistory} />
         </Col>
         <Col>
           <Board

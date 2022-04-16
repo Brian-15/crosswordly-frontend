@@ -1,41 +1,32 @@
-import { useState, useEffect } from "react";
-import useCollapse from "react-collapsed";
+// import { useState, useEffect } from "react";
+// import useCollapse from "react-collapsed";
+import { Tab, ListGroup } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 import "./DefinitionList.css";
 
-const DefinitionList = ({ isExpanded, updateHook, word, definitions }) => {
-  const [hasExpanded, setExpanded] = useState(isExpanded);
-  const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded: hasExpanded });
-  const handleClick = () => {
-    updateHook();
-    setExpanded(val => !val);
-  }
-  return <>
-    <h3 className="DefinitionList-word" {...getToggleProps({ onClick: handleClick })}>
-      { `${word} ${hasExpanded ? "<" : ">"}` }
-    </h3>
-    {definitions
-      ? <ol {...getCollapseProps()}>
-        {definitions.map(({ definition, category, example }) => 
-          <li key={uuid()}>
-            <i>{ category.name }</i><br/>
-            <p>{ definition }</p>
-            { example
-              ? <p>Example:<br/><i> {example} </i></p>
-              : undefined }
-          </li>
-        )}
-    </ol>
-    : <p className="DefinitionList-empty" {...getCollapseProps()}>
-      Could not find definitions for {word}.<br/>
-      Find the definitions&nbsp;
-      <a target="_blank" rel="noreferrer" href={`https://www.google.com/search?q=define+${word}`}>
-        here
-      </a>
-        &nbsp;on Google.
-    </p>}
+const DefinitionList = ({ definitions }) => (
+  <>
+    { definitions.map((meanings, idx) => (
+      <Tab.Pane key={ uuid() } eventKey={`def-${idx}`}>
+        {meanings
+          ? <ListGroup as="ol" variant="flush" numbered>
+            { meanings.map(({ category, definition, example }) => (
+              <ListGroup.Item as="li">
+                <b>{category.name}</b>
+                <p>{definition}</p>
+                {example
+                ? <p>Example:<br/>
+                    <i>{example}</i>
+                  </p>
+                : undefined}
+              </ListGroup.Item>))}
+            </ListGroup>
+          : <p>No definitions found</p>
+        }
+        
+      </Tab.Pane>
+    ))}
   </>
-  
-};
+);
 
 export default DefinitionList;
