@@ -31,7 +31,6 @@ const LoginForm = () => {
   
   return (
     <Form className="Form" onSubmit={handleSubmit}>
-      <h2>Log In</h2>
       <FloatingLabel
         label="Username"
         className="mb-3"

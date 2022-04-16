@@ -33,7 +33,6 @@ const RegisterForm = () => {
 
   return (
     <Form className="Form" onSubmit={handleSubmit}>
-      <h2 className="text-center mb-3">Register</h2>
       <FloatingLabel label="Username">
         <Form.Control
           size="md"
