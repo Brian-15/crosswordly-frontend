@@ -9,9 +9,11 @@ const Cell = ({ letter, isActive }) => {
     className = "Cell-blank";
   }
 
-  return <td className={"Cell " + className}>
-    <b>{isActive ? letter.toUpperCase() : ""}</b>
-  </td>;
+  return (
+    <td className={"Cell " + className}>
+      <b>{isActive && letter ? letter : ""}</b>
+    </td>
+  );
 };
 
 export default Cell;
