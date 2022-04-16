@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { Row, Col } from "react-bootstrap";
 import UserContext from "../user/UserContext";
 import GameContext from "./GameContext";
 import VictoryView from "./VictoryView";
@@ -82,13 +83,18 @@ const Game = ({ word, maxWords }) => {
   };
   return <>
     {gameData && activeCells ? 
-      <>
-        <WordList words={wordHistory} />
-        <Board
-          rows={gameData.crossword}
-          words={gameData.words}
-          activeCells={activeCells}
-        />
+      <Row>
+        <Col>
+          <WordList words={wordHistory} />
+        </Col>
+        <Col>
+          <Board
+            rows={gameData.crossword}
+            words={gameData.words}
+            activeCells={activeCells}
+          />
+        </Col>
+        <Col>
         {wordsFound.numCrosswordsFound < gameData.numWords
           ? <>
               <ScoreBoard score={score} />
@@ -104,8 +110,8 @@ const Game = ({ word, maxWords }) => {
             </>
           : <VictoryView score={score} />
         }
-        
-      </>
+        </Col>
+      </Row>
       :
       <h1>Loading...</h1>
     }
