@@ -31,8 +31,8 @@ const App = () => {
           {gameStart
           ? <Game word={setupFormData.letters} maxWords={setupFormData.maxWords} />
           : user
-              ? <UserView />
-              : <GuestView />}
+            ? <UserView />
+            : <GuestView />}
         </GameContext.Provider>
       </UserContext.Provider>
     </div>
