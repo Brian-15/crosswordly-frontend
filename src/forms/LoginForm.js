@@ -24,7 +24,7 @@ const LoginForm = () => {
       ? `${backendURL}/auth/token`
       : "http://localhost:3001/auth/token",
       { username: formData.username, password: formData.password });
-    const { payload, protectedHeader } = await jwtVerify(data.token, SECRET_KEY);
+    const { payload } = await jwtVerify(data.token, SECRET_KEY);
     setUser(payload.dataValues);
   };
 

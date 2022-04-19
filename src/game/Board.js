@@ -4,7 +4,6 @@ import "./Board.css";
 
 const Board = ({ rows, activeCells }) => {
   const width = `${50 * rows[0].length}px`;
-
   return <table className="Board" style={{ width }}>
     <tbody>
     {rows.map((row, rowIdx) =>
