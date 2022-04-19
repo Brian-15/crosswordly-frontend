@@ -7,11 +7,11 @@ import "./DefinitionList.css";
 const DefinitionList = ({ definitions }) => (
   <>
     { definitions.map((meanings, idx) => (
-      <Tab.Pane key={ uuid() } eventKey={`def-${idx}`}>
+      <Tab.Pane key={ uuid() } eventKey={idx}>
         {meanings
           ? <ListGroup as="ol" variant="flush" numbered>
             { meanings.map(({ category, definition, example }) => (
-              <ListGroup.Item as="li">
+              <ListGroup.Item key={uuid()} as="li">
                 <b>{category.name}</b>
                 <p>{definition}</p>
                 {example

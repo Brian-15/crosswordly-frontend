@@ -5,7 +5,7 @@ import UserView from "./user/UserView";
 import GuestView from "./user/GuestView";
 import { useState } from "react";
 import UserContext from "./user/UserContext";
-import GameContext from './game/GameContext';
+import GameContext from "./game/GameContext";
 
 const App = () => {
   const initialSetupFormData = {

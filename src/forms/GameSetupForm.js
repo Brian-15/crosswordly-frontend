@@ -17,7 +17,7 @@ const GameSetupForm = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    if (!setupFormData.letters || setupFormData.maxWords <= 0) return;
+    if (setupFormData.letters.length < 3 || setupFormData.maxWords <= 0) return;
     setGameStart(true);
   };
 

@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Row, Col } from "react-bootstrap";
-import UserContext from "../user/UserContext";
-import GameContext from "./GameContext";
 import VictoryView from "./VictoryView";
 import Board from "./Board";
 import ScoreBoard from "./ScoreBoard";
@@ -35,7 +33,7 @@ const Game = ({ word, maxWords }) => {
     async function fetchBoard(root) {
       const { data } = await axios.get(process.env.NODE_ENV === "production"
         ? backendURL + `/boards?letters=${root}`
-        : `http://localhost:3001/boards?letters=${root}`);
+        : `http://localhost:3001/boards?letters=${root}&maxWords=${maxWords}`);
       setGameData(data);
       setActiveCells(data.crossword.map(row => row.map(cell => {
         return cell ? false : null;
