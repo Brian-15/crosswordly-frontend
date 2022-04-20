@@ -14,9 +14,8 @@ const VictoryView = ({ score }) => {
   
   useEffect(() => {
     async function patchHighScore(highScore) {
-      const { data } = await axios.patch(process.env.NODE_ENV === "production"
-        ? `${backendURL}/users/${user.id}`
-        : `http://localhost:3001/users/${user.id}`,
+      const { data } = await axios
+        .patch(`${backendURL}/users/${user.id}`,
         { highScore });
       
       user.highScore = data.highScore;

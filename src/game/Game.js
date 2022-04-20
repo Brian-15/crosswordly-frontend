@@ -6,7 +6,7 @@ import Board from "./Board";
 import ScoreBoard from "./ScoreBoard";
 import GuessForm from "../forms/GuessForm";
 import WordHistory from "../words/WordHistory";
-import { backendURL } from "../config";
+import { backendURL, randomWordsAPI } from "../config";
 import createLetterMap from "../helpers/createLetterMap";
 import "./Game.css";
 
@@ -22,7 +22,7 @@ const Game = ({ word, maxWords }) => {
 
   useEffect(() => {
     function fetchWord() {
-      axios.get(backendURL + "/words/random")
+      axios.get(randomWordsAPI)
         .then(async result => {
           setRootWord(result.data);
           await fetchBoard(result.data);
@@ -31,9 +31,7 @@ const Game = ({ word, maxWords }) => {
     }
 
     async function fetchBoard(root) {
-      const { data } = await axios.get(process.env.NODE_ENV === "production"
-        ? backendURL + `/boards?letters=${root}`
-        : `http://localhost:3001/boards?letters=${root}&maxWords=${maxWords}`);
+      const { data } = await axios.get(backendURL + `/boards?letters=${root}&maxWords=${maxWords}`);
       setGameData(data);
       setActiveCells(data.crossword.map(row => row.map(cell => {
         return cell ? false : null;
