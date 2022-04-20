@@ -20,9 +20,8 @@ const LoginForm = () => {
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-    const { data } = await axios.post(process.env.NODE_ENV === "production"
-      ? `${backendURL}/auth/token`
-      : "http://localhost:3001/auth/token",
+    const { data } = await axios
+      .post(`${backendURL}/auth/token`,
       { username: formData.username, password: formData.password });
     const { payload } = await jwtVerify(data.token, SECRET_KEY);
     setUser(payload.dataValues);

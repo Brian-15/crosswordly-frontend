@@ -20,9 +20,7 @@ const RegisterForm = () => {
     if (formData.password !== formData.confirmPwd) return;
     
     // handle registration AJAX call here
-    await axios.post(process.env.NODE_ENV === "production"
-      ? `${backendURL}/users`
-      : "http://localhost:3001/users", formData);
+    await axios.post(`${backendURL}/users`, formData);
   };
 
   const handleChange = evt => {
