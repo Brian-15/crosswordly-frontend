@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="display-2">CROSSWORDLY</h1>
+      <h1 className="display-5">CROSSWORDLY</h1>
       <UserContext.Provider value={{ user, setUser }}>
         <GameContext.Provider
           value={{

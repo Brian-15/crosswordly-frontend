@@ -7,7 +7,7 @@ import Instructions from "../game/Instructions";
 const GuestView = () => (
   <Tab.Container defaultActiveKey="guest">
     <Row>
-      <Nav variant="pills" className="mt-5 flex-row justify-content-center">
+      <Nav variant="pills" className="mt-1 flex-row justify-content-center">
         <Nav.Item>
           <Nav.Link className="user-select-none" disabled>Play as:</Nav.Link>
         </Nav.Item>

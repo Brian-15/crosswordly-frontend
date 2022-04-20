@@ -1,18 +1,19 @@
 import Card from "react-bootstrap/Card";
 
 const Instructions = () => (
-  <Card style={{ width: "30%" }}>
+  <Card className="m-auto mt-3" style={{ width: "30%" }}>
     <Card.Body>
       <Card.Title>How to Play</Card.Title>
-      <Card.Text>
-        In Crosswordly, each puzzle only contains a specific set of letters!<br/>
-        Choose a "seed", which contains all the letters allowed in the puzzle, including duplicates.<br/>
-        Seeds cannot be under 3 letters length.
+      <Card.Text style={{ textAlign: "justify" }}>
+        <p>Each puzzle only contains a specific set of letters!</p>
+        <p>Choose a "seed", which contains all the letters allowed in the puzzle, including duplicates.</p>
+        <p>Seeds must be at least 3 letters in length.</p>
+        <p>Optionally, you may limit the amount of words the puzzle is allowed to use.</p>
 
-        Example:
+        <i>Example:</i><br/>
         "hello" seed can generate words such as "leo", "hole", and "ell".
 
-        Optionally, you may limit the amount of words the puzzle is allowed to use.
+        
       </Card.Text>
     </Card.Body>
   </Card>
