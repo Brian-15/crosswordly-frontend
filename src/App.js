@@ -19,22 +19,24 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="display-5">CROSSWORDLY</h1>
-      <UserContext.Provider value={{ user, setUser }}>
-        <GameContext.Provider
-          value={{
-            gameStart,
-            setGameStart,
-            setupFormData,
-            setSetupFormData
-          }}
-        >
-          {gameStart
-          ? <Game word={setupFormData.letters} maxWords={setupFormData.maxWords} />
-          : user
-            ? <UserView />
-            : <GuestView />}
-        </GameContext.Provider>
-      </UserContext.Provider>
+      <div>
+        <UserContext.Provider value={{ user, setUser }}>
+          <GameContext.Provider
+            value={{
+              gameStart,
+              setGameStart,
+              setupFormData,
+              setSetupFormData
+            }}
+          >
+            {gameStart
+            ? <Game word={setupFormData.letters} maxWords={setupFormData.maxWords} />
+            : user
+              ? <UserView />
+              : <GuestView />}
+          </GameContext.Provider>
+        </UserContext.Provider>
+      </div>
     </div>
   );
 };

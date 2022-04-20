@@ -20,7 +20,8 @@ const RegisterForm = () => {
     if (formData.password !== formData.confirmPwd) return;
     
     // handle registration AJAX call here
-    await axios.post(`${backendURL}/users`, formData);
+    const {data} = await axios.post(`${backendURL}/users`, formData);
+    console.log(data);
   };
 
   const handleChange = evt => {
