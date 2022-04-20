@@ -9,7 +9,6 @@ import WordHistory from "../words/WordHistory";
 import { backendURL, randomWordsAPI } from "../config";
 import createLetterMap from "../helpers/createLetterMap";
 import GameContext from "./GameContext";
-import "./Game.css";
 
 const Game = ({ word, maxWords }) => {
   const [gameData, setGameData] = useState(undefined);
@@ -84,11 +83,11 @@ const Game = ({ word, maxWords }) => {
 
   return <>
     {gameData && activeCells ? 
-      <Row>
+      <Row style={{ height: "100%" }}>
         <Col>
           <WordHistory words={wordHistory} />
         </Col>
-        <Col>
+        <Col className="d-flex flex-column justify-content-around">
           <Board
             rows={gameData.crossword}
             words={gameData.words}

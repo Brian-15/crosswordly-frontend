@@ -5,7 +5,6 @@ const Instructions = () => (
     <Card.Body>
       <Card.Title>How to Play</Card.Title>
       <Card.Text style={{ textAlign: "justify" }}>
-        <p>Each puzzle only contains a specific set of letters!</p>
         <p>Choose a "seed", which contains all the letters allowed in the puzzle, including duplicates.</p>
         <p>Seeds must be at least 3 letters in length.</p>
         <p>Optionally, you may limit the amount of words the puzzle is allowed to use.</p>
