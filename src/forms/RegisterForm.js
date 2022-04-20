@@ -27,7 +27,7 @@ const RegisterForm = () => {
   const handleChange = evt => {
     const { name, value } = evt.target;
     setFormData(data => ({ ...data, [name]: value }));
-  }
+  };
 
   return (
     <Form className="Form" onSubmit={handleSubmit}>
