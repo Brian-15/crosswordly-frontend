@@ -2,6 +2,7 @@ import { Tab, Row, Nav } from "react-bootstrap";
 import GameSetupForm from "../forms/GameSetupForm";
 import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
+import Instructions from "../game/Instructions";
 
 const GuestView = () => (
   <Tab.Container defaultActiveKey="guest">
@@ -24,6 +25,7 @@ const GuestView = () => (
     <Row>
       <Tab.Content>
         <Tab.Pane eventKey="guest">
+          <Instructions />
           <GameSetupForm />
         </Tab.Pane>
         <Tab.Pane eventKey="newUser">

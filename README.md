@@ -20,6 +20,7 @@
     - [GameContext](#gamecontext)
     - [ScoreBoard](#scoreboard)
     - [VictoryView](#victoryview)
+    - [Instructions](#instructions)
   - [Word Components](#words)
     - [DefinitionList](#definitionlist)
     - [WordList](#wordlist)
@@ -204,6 +205,12 @@ Replaces ScoreBoard component when all words on crossword have been found. Displ
 |setGameStart|Function|setter for gameStart hook, taken from [GameContext](#gamecontext)|
 |user|Object|user data from [UserContext](#usercontext)|
 |user|Function|user data setter from [UserContext](#usercontext)|
+
+[Back To Top](#crosswordly-frontend)
+
+## Instructions
+
+Short paragraph for basic game how to play instructions.
 
 [Back To Top](#crosswordly-frontend)
 
