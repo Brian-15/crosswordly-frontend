@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import VictoryView from "./VictoryView";
 import Board from "./Board";
 import ScoreBoard from "./ScoreBoard";
@@ -8,6 +8,7 @@ import GuessForm from "../forms/GuessForm";
 import WordHistory from "../words/WordHistory";
 import { backendURL, randomWordsAPI } from "../config";
 import createLetterMap from "../helpers/createLetterMap";
+import GameContext from "./GameContext";
 import "./Game.css";
 
 const Game = ({ word, maxWords }) => {
@@ -19,6 +20,7 @@ const Game = ({ word, maxWords }) => {
   const [activeCells, setActiveCells] = useState(undefined);
   const [wordHistory, setWordHistory] = useState([]);
   const [score, setScore] = useState(0);
+  const { setGameStart } = useContext(GameContext);
 
   useEffect(() => {
     function fetchWord() {
@@ -77,6 +79,9 @@ const Game = ({ word, maxWords }) => {
       setGuess("");
     }
   };
+
+  const handleQuit = () => setGameStart(false);
+
   return <>
     {gameData && activeCells ? 
       <Row>
@@ -89,6 +94,7 @@ const Game = ({ word, maxWords }) => {
             words={gameData.words}
             activeCells={activeCells}
           />
+          <Button variant="danger" onClick={handleQuit}>Quit</Button>
         </Col>
         <Col>
         {wordsFound.numCrosswordsFound < gameData.numWords
