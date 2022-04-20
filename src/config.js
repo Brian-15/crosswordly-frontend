@@ -1,5 +1,5 @@
 const config = {
-  backendURL: process.env.BACKEND_URL || "http://localhost:3001",
+  backendURL: "https://crosswordly-backend.herokuapp.com",
   randomWordsAPI: "https://random-words-api.vercel.app/word",
   SECRET_KEY: new TextEncoder().encode(process.env.SECRET_KEY || "secret-dev")
 };
